@@ -38,12 +38,38 @@ Below is the sample code for the pool that demonstrates this behavior.
 If you pass a **maxIdle** property in the config for a new connection pool,
 `pool.getConnection()` will close stale connections, and will return a sufficiently fresh connection, or a new connection. **maxIdle** can be number representing the maximum number of milliseconds since a connection was last used, that a connection is still considered alive (without making an extra call to the database to check that the connection is valid). If **maxIdle** is a falsy value or is absent from the config, this feature does not come into effect. This feature is useful, when connections are automatically closed from the server side after a certain period of time, and when it is not appropriate to use the connection keepalive feature.
 
+-   **Fully Wrapped Connection API**
+
+The Java Connection API has almost been completely wrapped.
+
+```typescript
+await conn.setAutoCommit(false);
+```
+
+-   **ResultSet processing separated from statement execution**
+
+ResultSet processing has been separated from statement execution to allow for
+more flexibility. The ResultSet returned from executing a select query can
+still be processed into an object array using the `toObjArray()` function on the
+resultset object.
+
+```typescript
+// Select statement example.
+let statement = await conn.createStatement();
+let resultSet = await statement.executeQuery("SELECT * FROM blah;");
+// Convert the result set to an object array.
+let results = await resultset.toObjArray();
+if (results.length > 0) {
+    console.log("ID: " + results[0].ID);
+}
+```
+
 Some mininal examples are given below
 
 ```typescript
 import { JDBC, JdbcPoolConfig } from "jdbc";
 
-var config: JdbcPoolConfig = {
+const config: JdbcPoolConfig = {
     url: "jdbc:hsqldb:hsql://localhost/xdb",
     user: "SA",
     password: "",
@@ -95,30 +121,4 @@ class User {
 }
 
 test();
-```
-
--   **Fully Wrapped Connection API**
-
-The Java Connection API has almost been completely wrapped.
-
-```typescript
-await conn.setAutoCommit(false);
-```
-
--   **ResultSet processing separated from statement execution**
-
-ResultSet processing has been separated from statement execution to allow for
-more flexibility. The ResultSet returned from executing a select query can
-still be processed into an object array using the `toObjArray()` function on the
-resultset object.
-
-```typescript
-// Select statement example.
-let statement = await conn.createStatement();
-let resultSet = await statement.executeQuery("SELECT * FROM blah;");
-// Convert the result set to an object array.
-let results = await resultset.toObjArray();
-if (results.length > 0) {
-    console.log("ID: " + results[0].ID);
-}
 ```
