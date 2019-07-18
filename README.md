@@ -84,9 +84,10 @@ async function test() {
     console.log(pool.status);
     try {
         let statement = await conn.prepareStatement(`
-            SELECT * FROM USERS WHERE USER_ID = ?
-        `);
+        SELECT * FROM USERS WHERE USER_ID = ? AND AGE > ?
+      `);
         await statement.setLong(1, 10000001);
+        await statement.setInt(2, 25);
         let resultSet = await statement.executeQuery();
         let rows = await resultSet.toObjArray({
             class: User,
