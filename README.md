@@ -88,7 +88,7 @@ async function test() {
         `);
         await statement.setLong(1, 10000001);
         let resultSet = await statement.executeQuery();
-        let rows = await resultSet.toObject({
+        let rows = await resultSet.toObjArray({
             class: User,
             camelize: true
         });
