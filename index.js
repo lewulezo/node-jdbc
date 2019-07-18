@@ -1,1 +1,1 @@
-module.exports = require("./lib/jdbc.js");
+module.exports = require("./dist/jdbc.js");

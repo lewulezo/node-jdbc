@@ -1,44 +1,43 @@
 {
-  "name": "jdbc",
-  "version": "0.6.5-pre.0",
-  "description": "Node Module JDBC wrapper",
-  "main": "index.js",
-  "dependencies": {
-    "async": "~3.0.1",
-    "java": "^0.11.0",
-    "lodash": "~4.17.11",
-    "uuid": "^3.3.2",
-    "winston": "^3.2.1"
-  },
-  "devDependencies": {
-    "jshint": "~2.10.2",
-    "lolex": "^4.1.0",
-    "nodeunit": "~0.11.3",
-    "q": "^1.5.1"
-  },
-  "scripts": {
-    "pretest": "bash bin/startdbs",
-    "test": "nodeunit test",
-    "posttest": "bash bin/stopdbs",
-    "lint": "jshint lib/**.js test/**.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/CraZySacX/node-jdbc.git"
-  },
-  "directories": {
-    "doc": ".",
-    "lib": "lib"
-  },
-  "keywords": [
-    "node",
-    "jdbc",
-    "wrapper"
-  ],
-  "engines": {
-    "node": ">=0.10"
-  },
-  "author": "Jason Ozias <jason.g.ozias@gmail.com>",
-  "license": "MIT",
-  "readmeFilename": "README.md"
+    "name": "jdbc-ts",
+    "version": "0.6.5-pre.0",
+    "description": "Node-typescript JDBC wrapper",
+    "main": "./dist/index.js",
+    "types": "./src/index.ts",
+    "dependencies": {
+        "events": "^3.0.0",
+        "java": "^0.11.0",
+        "util": "^0.12.1",
+        "uuid": "^3.3.2"
+    },
+    "devDependencies": {
+        "@types/java": "^0.9.0",
+        "@types/node": "^12.6.3",
+        "@types/uuid": "^3.4.5"
+    },
+    "scripts": {
+        "pretest": "bash bin/startdbs",
+        "test": "nodeunit test",
+        "posttest": "bash bin/stopdbs",
+        "lint": "jshint lib/**.js test/**.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/lewulezo/node-jdbc"
+    },
+    "directories": {
+        "doc": ".",
+        "lib": "lib"
+    },
+    "keywords": [
+        "node",
+        "jdbc",
+        "wrapper"
+    ],
+    "engines": {
+        "node": ">=0.10"
+    },
+    "author": "lewulezo <lewulezo@gmail.com>",
+    "license": "MIT",
+    "readmeFilename": "README.md"
 }

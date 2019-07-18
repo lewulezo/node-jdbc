@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es2017",
+        "sourceMap": true,
+        "jsx": "react",
+        "outDir": "dist",
+        "rootDir": "src",
+        "experimentalDecorators": true,
+        "strictNullChecks": true
+    },
+    "exclude": ["node_modules", "bower_components"]
+}
